@@ -1,0 +1,30 @@
+/**
+ * 
+ */
+package com.alexfierro.league.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.alexfierro.league.entity.Country;
+import com.alexfierro.league.repository.CountryRepository;
+
+/**
+ * @author alpha
+ *
+ */
+@Service
+public class CountryService {
+	@Autowired
+	private CountryRepository countryRep;
+	
+	public List<Country> getCountries(){
+		return countryRep.findAll();
+	}
+	
+	public Country saveCountry(Country country) {
+		return countryRep.save(country);
+	}
+}
