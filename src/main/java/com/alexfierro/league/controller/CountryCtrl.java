@@ -23,17 +23,23 @@ import com.alexfierro.league.service.CountryService;
  */
 @RestController
 @RequestMapping("/countries")
-public class CountryCtrl {
+public class CountryCtrl extends  MainCtrl{
 	@Autowired
 	private CountryService countrySrv;
 	
 	@GetMapping("/list-countries")
-	public ResponseEntity<List<Country>> listUsers(){
+	public ResponseEntity<?> listUsers(){
+		if (!hasAccess()) {
+			return new ResponseEntity<>("Not access to this point", HttpStatus.FORBIDDEN);
+		}
 		return new ResponseEntity<List<Country>>(countrySrv.getCountries(), HttpStatus.OK);
 	}
 	
 	@PostMapping("/save-country")
 	public ResponseEntity<?> saveCountry(@RequestBody Country country){
+		if (!hasAccess()) {
+			return new ResponseEntity<>("Not access to this point", HttpStatus.FORBIDDEN);
+		}
 		Country nCountry = null;
 		try {
 			nCountry = countrySrv.saveCountry(country);
