@@ -27,7 +27,8 @@ public class MainCtrl {
 	protected UserAccessService userSrv;
 	
 	public boolean hasAccess() {
-		boolean access = (currentUser.getUsername() == null);
+		getCurrentUser();
+		boolean access = (currentUser != null && currentUser.getUsername() != null);
 		return access;
 	}
 
