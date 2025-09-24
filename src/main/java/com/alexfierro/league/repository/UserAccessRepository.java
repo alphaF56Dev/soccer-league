@@ -17,4 +17,6 @@ import com.alexfierro.league.entity.UserAccess;
 @Repository
 public interface UserAccessRepository extends JpaRepository<UserAccess, Long>{
 	public Optional<UserAccess> findByUsernameAndPassword(String username, String password);
+	
+	public UserAccess findByUsername(String username);
 }

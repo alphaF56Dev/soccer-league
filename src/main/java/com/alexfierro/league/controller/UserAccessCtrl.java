@@ -24,7 +24,7 @@ import com.alexfierro.league.service.UserAccessService;
  */
 @RestController
 @RequestMapping("/users")
-public class UserAccessCtrl {
+public class UserAccessCtrl extends MainCtrl{
 	@Autowired
 	private UserAccessService userSrv;
 	
@@ -35,7 +35,8 @@ public class UserAccessCtrl {
 		try {
 			username = (String)params.get("username");
 			pw = (String) params.get("pw");
-			userSrv.validateAccess(username, pw);
+			setCurrentUser(userSrv.validateAccess(username, pw));
+			currentSession.setAttribute("username", username);
 		} catch (Exception e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -44,6 +45,9 @@ public class UserAccessCtrl {
 	
 	@PostMapping("/add-user")
 	public ResponseEntity<?> addUser(@RequestBody UserAccess userAccess){
+		if (!hasAccess()) {
+			return new ResponseEntity<>("Not access to this point", HttpStatus.FORBIDDEN);
+		}
 		UserAccess nUser = null;
 		try {
 			nUser = userSrv.addUserAccess(userAccess);
@@ -55,6 +59,9 @@ public class UserAccessCtrl {
 	
 	@GetMapping("/list-users")
 	public ResponseEntity<?> listUsers(){
+		if (!hasAccess()) {
+			return new ResponseEntity<>("Not access to this point", HttpStatus.FORBIDDEN);
+		}
 		return new ResponseEntity<>(userSrv.listUsers(), HttpStatus.OK);
 	}
 	

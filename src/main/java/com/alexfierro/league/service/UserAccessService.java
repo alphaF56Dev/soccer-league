@@ -4,6 +4,7 @@
 package com.alexfierro.league.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,5 +35,10 @@ public class UserAccessService {
 	
 	public List<UserAccess> listUsers(){
 		return userRep.findAll();
+	}
+	
+	public UserAccess findUserByUsername(String username) {
+		UserAccess user = userRep.findByUsername(username);
+		return user;
 	}
 }
