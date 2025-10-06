@@ -73,7 +73,7 @@ public class MemberCtrl extends MainCtrl{
 		}
 		HttpStatus status = HttpStatus.ACCEPTED;
 		String msg = "";
-		int code = 1;
+		int code = -1;
 		try {
 			if(member.getIsActive()) {
 				code = memberSrv.enableMember(member.getIdMember());
@@ -84,6 +84,12 @@ public class MemberCtrl extends MainCtrl{
 			case 0: {
 				status = HttpStatus.NOT_FOUND;
 				msg = "Member to change status was not found.";
+				break;
+			}
+			case 1:{
+				msg = "Status was updated";
+				status = HttpStatus.ACCEPTED;
+				break;
 			}
 			default:
 				msg = "Fail to update status.";
