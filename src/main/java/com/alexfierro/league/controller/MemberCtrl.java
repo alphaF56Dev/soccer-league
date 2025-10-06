@@ -73,16 +73,21 @@ public class MemberCtrl extends MainCtrl{
 		}
 		HttpStatus status = HttpStatus.ACCEPTED;
 		String msg = "";
+		int code = 1;
 		try {
-			Optional<Member> memberFull = memberSrv.findMemberById(member.getIdMember());
-			if(memberFull.isPresent()) {
-				Member memberModif = memberFull.get();
-				memberModif.setIsActive(member.getIsActive());
-				memberSrv.saveMember(memberModif);
-			}else
-			{
-				msg = "Member to update status was not found.";
+			if(member.getIsActive()) {
+				code = memberSrv.enableMember(member.getIdMember());
+			}else {
+				code = memberSrv.disableMember(member.getIdMember());
+			}
+			switch (code) {
+			case 0: {
 				status = HttpStatus.NOT_FOUND;
+				msg = "Member to change status was not found.";
+			}
+			default:
+				msg = "Fail to update status.";
+				status = HttpStatus.CONFLICT;
 			}
 		} catch (Exception e) {
 			//return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
