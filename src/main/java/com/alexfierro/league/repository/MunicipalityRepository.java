@@ -11,7 +11,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.alexfierro.league.entity.Municipality;
-import com.alexfierro.league.entity.State;
 
 /**
  * @author alpha
