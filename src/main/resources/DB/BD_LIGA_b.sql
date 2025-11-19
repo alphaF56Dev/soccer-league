@@ -173,9 +173,10 @@ CREATE TABLE direction (
 );
 
 CREATE TABLE category_league_has_referee (
-  id_referee BIGSERIAL NOT NULL,
+  id_category_referee BIGSERIAL NOT NULL,
+  id_referee BIGINT NOT NULL,
   id_category_league BIGINT NOT NULL,
-  PRIMARY KEY(id_referee, id_category_league),
+  PRIMARY KEY(id_category_referee),
   FOREIGN KEY(id_category_league)
     REFERENCES category_league(id_category_league)
       ON DELETE NO ACTION

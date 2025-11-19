@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="yes" ?>
 <DBMODEL Version="4.0">
 <SETTINGS>
-<GLOBALSETTINGS ModelName="DB_Liga" IDModel="0" IDVersion="0" VersionStr="1.0.0.0" Comments="" UseVersionHistroy="1" AutoIncVersion="1" DatabaseType="MySQL" ZoomFac="100.00" XPos="0" YPos="0" DefaultDataType="5" DefaultTablePrefix="0" DefSaveDBConn="" DefSyncDBConn="" DefQueryDBConn="" Printer="" HPageCount="4.0" PageAspectRatio="1.440892512336408" PageOrientation="1" PageFormat="A4 (210x297 mm, 8.26x11.7 inches)" SelectedPages="" UsePositionGrid="0" PositionGridX="20" PositionGridY="20" TableNameInRefs="1" DefaultTableType="0" ActivateRefDefForNewRelations="1" FKPrefix="" FKPostfix="" CreateFKRefDefIndex="1" DBQuoteCharacter="`" CreateSQLforLinkedObjects="0" DefModelFont="Tahoma" CanvasWidth="4096" CanvasHeight="2842" />
+<GLOBALSETTINGS ModelName="DB_Liga" IDModel="0" IDVersion="0" VersionStr="1.0.0.0" Comments="" UseVersionHistroy="1" AutoIncVersion="1" DatabaseType="MySQL" ZoomFac="100.00" XPos="0" YPos="425" DefaultDataType="5" DefaultTablePrefix="0" DefSaveDBConn="" DefSyncDBConn="" DefQueryDBConn="" Printer="" HPageCount="4.0" PageAspectRatio="1.440892512336408" PageOrientation="1" PageFormat="A4 (210x297 mm, 8.26x11.7 inches)" SelectedPages="" UsePositionGrid="0" PositionGridX="20" PositionGridY="20" TableNameInRefs="1" DefaultTableType="0" ActivateRefDefForNewRelations="1" FKPrefix="" FKPostfix="" CreateFKRefDefIndex="1" DBQuoteCharacter="`" CreateSQLforLinkedObjects="0" DefModelFont="Tahoma" CanvasWidth="4096" CanvasHeight="2842" />
 <DATATYPEGROUPS>
 <DATATYPEGROUP Name="Numeric Types" Icon="1" />
 <DATATYPEGROUP Name="Date and Time Types" Icon="2" />
@@ -636,8 +636,8 @@
 </COLUMN>
 </COLUMNS>
 <RELATIONS_START>
-<RELATION_START ID="1571" />
 <RELATION_START ID="1700" />
+<RELATION_START ID="1943" />
 </RELATIONS_START>
 <RELATIONS_END>
 <RELATION_END ID="1577" />
@@ -697,10 +697,10 @@
 </COLUMN>
 </COLUMNS>
 <RELATIONS_START>
-<RELATION_START ID="1570" />
 <RELATION_START ID="1620" />
 <RELATION_START ID="1647" />
 <RELATION_START ID="1664" />
+<RELATION_START ID="1946" />
 </RELATIONS_START>
 <INDICES>
 <INDEX ID="1563" IndexName="PRIMARY" IndexKind="0" FKRefDef_Obj_id="-1">
@@ -710,15 +710,21 @@
 </INDEX>
 </INDICES>
 </TABLE>
-<TABLE ID="1569" Tablename="category_league_has_referee" PrevTableName="" XPos="2" YPos="845" TableType="0" TablePrefix="0" nmTable="1" Temporary="0" UseStandardInserts="0" StandardInserts="\n" TableOptions="DelayKeyTblUpdates=0\nPackKeys=0\nRowChecksum=0\nRowFormat=0\nUseRaid=0\nRaidType=0\n" Comments="" Collapsed="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="17" >
+<TABLE ID="1569" Tablename="category_league_has_referee" PrevTableName="" XPos="21" YPos="886" TableType="0" TablePrefix="0" nmTable="1" Temporary="0" UseStandardInserts="0" StandardInserts="\n" TableOptions="DelayKeyTblUpdates=0\nPackKeys=0\nRowChecksum=0\nRowFormat=0\nUseRaid=0\nRaidType=0\n" Comments="" Collapsed="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="17" >
 <COLUMNS>
-<COLUMN ID="1805" ColName="id_referee" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
+<COLUMN ID="1927" ColName="id_category_referee" PrevColName="" Pos="2" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
 <OPTIONSELECTED>
 <OPTIONSELECT Value="0" />
 <OPTIONSELECT Value="0" />
 </OPTIONSELECTED>
 </COLUMN>
-<COLUMN ID="1806" ColName="id_category_league" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
+<COLUMN ID="1947" ColName="category_league_id_category_league" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="0" />
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1944" ColName="referee_id_referee" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
 <OPTIONSELECTED>
 <OPTIONSELECT Value="0" />
 <OPTIONSELECT Value="0" />
@@ -726,24 +732,23 @@
 </COLUMN>
 </COLUMNS>
 <RELATIONS_END>
-<RELATION_END ID="1570" />
-<RELATION_END ID="1571" />
+<RELATION_END ID="1943" />
+<RELATION_END ID="1946" />
 </RELATIONS_END>
 <INDICES>
-<INDEX ID="1576" IndexName="PRIMARY" IndexKind="0" FKRefDef_Obj_id="-1">
+<INDEX ID="1942" IndexName="PRIMARY" IndexKind="0" FKRefDef_Obj_id="-1">
 <INDEXCOLUMNS>
-<INDEXCOLUMN idColumn="1805" LengthParam="0" />
-<INDEXCOLUMN idColumn="1806" LengthParam="0" />
+<INDEXCOLUMN idColumn="1927" LengthParam="0" />
 </INDEXCOLUMNS>
 </INDEX>
-<INDEX ID="1573" IndexName="category_league_has_referee_FKIndex1" IndexKind="1" FKRefDef_Obj_id="1570">
+<INDEX ID="1945" IndexName="category_league_has_referee_FKIndex1" IndexKind="1" FKRefDef_Obj_id="1943">
 <INDEXCOLUMNS>
-<INDEXCOLUMN idColumn="1806" LengthParam="0" />
+<INDEXCOLUMN idColumn="1944" LengthParam="0" />
 </INDEXCOLUMNS>
 </INDEX>
-<INDEX ID="1575" IndexName="category_league_has_referee_FKIndex2" IndexKind="1" FKRefDef_Obj_id="1571">
+<INDEX ID="1948" IndexName="category_league_has_referee_FKIndex2" IndexKind="1" FKRefDef_Obj_id="1946">
 <INDEXCOLUMNS>
-<INDEXCOLUMN idColumn="1805" LengthParam="0" />
+<INDEXCOLUMN idColumn="1947" LengthParam="0" />
 </INDEXCOLUMNS>
 </INDEX>
 </INDICES>
@@ -1451,10 +1456,8 @@
 <RELATION ID="1526" RelationName="Rel_03" Kind="2" SrcTable="1507" DestTable="1514" FKFields="id_state=id_state\n" FKFieldsComments="\n" relDirection="2" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1921" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="9" />
 <RELATION ID="1529" RelationName="Rel_04" Kind="2" SrcTable="1514" DestTable="1487" FKFields="id_municipality=id_municipality\n" FKFieldsComments="\n" relDirection="4" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1531" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="10" />
 <RELATION ID="1540" RelationName="Rel_05" Kind="2" SrcTable="1532" DestTable="1476" FKFields="id_member_type=id_member_type\n" FKFieldsComments="\n" relDirection="4" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1542" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="12" />
-<RELATION ID="1570" RelationName="Rel_08" Kind="1" SrcTable="1560" DestTable="1569" FKFields="id_category_league=id_category_league\n" FKFieldsComments="\n" relDirection="4" MidOffset="-452" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1573" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="18" />
-<RELATION ID="1571" RelationName="Rel_09" Kind="1" SrcTable="1555" DestTable="1569" FKFields="id_referee=id_referee\n" FKFieldsComments="\n" relDirection="3" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1575" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="19" />
 <RELATION ID="1580" RelationName="Rel_11" Kind="5" SrcTable="1476" DestTable="1543" FKFields="id_member=member_id_member\n" FKFieldsComments="\n" relDirection="2" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1582" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="20" />
-<RELATION ID="1620" RelationName="Rel_17" Kind="2" SrcTable="1560" DestTable="1613" FKFields="id_category_league=id_category_league\n" FKFieldsComments="\n" relDirection="4" MidOffset="-285" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1622" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="26" />
+<RELATION ID="1620" RelationName="Rel_17" Kind="2" SrcTable="1560" DestTable="1613" FKFields="id_category_league=id_category_league\n" FKFieldsComments="\n" relDirection="4" MidOffset="-340" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1622" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="26" />
 <RELATION ID="1628" RelationName="Rel_18" Kind="2" SrcTable="1543" DestTable="1623" FKFields="id_player=id_player\n" FKFieldsComments="\n" relDirection="3" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1630" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="28" />
 <RELATION ID="1631" RelationName="Rel_19" Kind="2" SrcTable="1613" DestTable="1623" FKFields="id_team_category_league=id_team_category_league\n" FKFieldsComments="\n" relDirection="1" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1633" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="29" />
 <RELATION ID="1617" RelationName="Rel_16" Kind="2" SrcTable="1583" DestTable="1613" FKFields="id_team=id_team\n" FKFieldsComments="\n" relDirection="3" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1637" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="25" />
@@ -1471,7 +1474,7 @@
 <RELATION ID="1718" RelationName="Rel_32" Kind="2" SrcTable="1653" DestTable="1712" FKFields="id_game=id_game\n" FKFieldsComments="\n" relDirection="3" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1720" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="42" />
 <RELATION ID="1721" RelationName="Rel_33" Kind="2" SrcTable="1675" DestTable="1712" FKFields="id_game_assistance=id_game_assistance\n" FKFieldsComments="\n" relDirection="2" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1723" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="43" />
 <RELATION ID="1725" RelationName="Rel_34" Kind="2" SrcTable="1543" DestTable="1675" FKFields="id_player=id_player\n" FKFieldsComments="\n" relDirection="2" MidOffset="-58" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1727" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="44" />
-<RELATION ID="1740" RelationName="player_in" Kind="5" SrcTable="1675" DestTable="1734" FKFields="id_game_assistance=id_game_assistance_in\n" FKFieldsComments="\n" relDirection="3" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1742" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="46" />
+<RELATION ID="1740" RelationName="player_in" Kind="5" SrcTable="1675" DestTable="1734" FKFields="id_game_assistance=id_game_assistance_in\n" FKFieldsComments="\n" relDirection="3" MidOffset="21" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1742" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="46" />
 <RELATION ID="1745" RelationName="player_out" Kind="5" SrcTable="1675" DestTable="1734" FKFields="id_game_assistance=id_game_assistance_out\n" FKFieldsComments="\n" relDirection="3" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1747" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="47" />
 <RELATION ID="1749" RelationName="Rel_37" Kind="2" SrcTable="1653" DestTable="1734" FKFields="id_game=id_game\n" FKFieldsComments="\n" relDirection="4" MidOffset="-64" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1751" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="48" />
 <RELATION ID="1768" RelationName="cards" Kind="2" SrcTable="1675" DestTable="1755" FKFields="id_game_assistance=id_game_assistance\n" FKFieldsComments="\n" relDirection="3" MidOffset="-138" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1770" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="50" />
@@ -1479,6 +1482,8 @@
 <RELATION ID="1798" RelationName="Rel_40" Kind="2" SrcTable="1653" DestTable="1778" FKFields="id_game=id_game\n" FKFieldsComments="\n" relDirection="2" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1800" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="53" />
 <RELATION ID="1577" RelationName="Rel_10" Kind="5" SrcTable="1476" DestTable="1555" FKFields="id_member=id_member\n" FKFieldsComments="\n" relDirection="3" MidOffset="8" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1853" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="20" />
 <RELATION ID="1922" RelationName="Rel_33" Kind="5" SrcTable="1476" DestTable="1907" FKFields="id_member=id_member\n" FKFieldsComments="\n" relDirection="1" MidOffset="8" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1924" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="55" />
+<RELATION ID="1943" RelationName="Rel_34" Kind="2" SrcTable="1555" DestTable="1569" FKFields="id_referee=referee_id_referee\n" FKFieldsComments="\n" relDirection="3" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1945" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="54" />
+<RELATION ID="1946" RelationName="Rel_35" Kind="2" SrcTable="1560" DestTable="1569" FKFields="id_category_league=category_league_id_category_league\n" FKFieldsComments="\n" relDirection="4" MidOffset="-520" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1948" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="55" />
 </RELATIONS>
 <NOTES>
 </NOTES>
