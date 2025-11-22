@@ -93,14 +93,25 @@ CREATE TABLE referee (
       ON UPDATE NO ACTION
 );
 
+CREATE TABLE position_catalog (
+  idposition_catalog SERIAL NOT NULL,
+  position_name VARCHAR(70) NULL,
+  code VARCHAR(5) NULL,
+  description VARCHAR(250) NULL,
+  PRIMARY KEY(idposition_catalog)
+);
+
 CREATE TABLE player (
   id_player BIGSERIAL NOT NULL,
   member_id_member BIGINT NOT NULL,
-  number_player VARCHAR(5) NULL,
   nickname VARCHAR(35) NULL,
   PRIMARY KEY(id_player),
   FOREIGN KEY(member_id_member)
     REFERENCES member(id_member)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY (idposition_catalog)
+    REFERENCES position_catalog(idposition_catalog)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
 );
