@@ -95,7 +95,7 @@ CREATE TABLE referee (
 
 CREATE TABLE position_catalog (
   idposition_catalog SERIAL NOT NULL,
-  position_name VARCHAR(70) NULL,
+  position_name VARCHAR(70) NULL UNIQUE,
   code VARCHAR(5) NULL,
   description VARCHAR(250) NULL,
   PRIMARY KEY(idposition_catalog)
