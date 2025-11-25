@@ -103,10 +103,11 @@ CREATE TABLE position_catalog (
 
 CREATE TABLE player (
   id_player BIGSERIAL NOT NULL,
-  member_id_member BIGINT NOT NULL,
+  id_member BIGINT NOT NULL,
   nickname VARCHAR(35) NULL,
+  idposition_catalog INTEGER,
   PRIMARY KEY(id_player),
-  FOREIGN KEY(member_id_member)
+  FOREIGN KEY(id_member)
     REFERENCES member(id_member)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION,
