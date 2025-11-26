@@ -58,8 +58,9 @@ CREATE TABLE state (
 CREATE TABLE team (
   id_team BIGSERIAL NOT NULL,
   id_member BIGINT NOT NULL,
-  team_name VARCHAR(100) NOT NULL,
+  team_name VARCHAR(100) NOT NULL UNIQUE,
   registration_date DATE NOT NULL,
+  isActive BOOL NULL DEFAULT TRUE,
   PRIMARY KEY(id_team),
   FOREIGN KEY(id_member)
     REFERENCES member(id_member)
