@@ -84,7 +84,7 @@ public class TeamCategoryLeague extends MainCtrl{
 			code = tCatLeagueSrv.removeCategoryOfTeam(idTeam, idCategoryLeague);
 			switch (code) {
 			case 0: {
-				msg = "The team has the category added.";
+				msg = "The team has not the category added yet.";
 				status = HttpStatus.CONFLICT;
 				break;
 			}
