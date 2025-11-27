@@ -29,12 +29,13 @@ public class TeamService {
 	}
 	
 	public List<TeamDto> listTeamsByStatus(Boolean isActive){
-		return transformToTeamDto(teamRep.findByActive(isActive));
+		return transformToTeamDto(teamRep.findByIsActive(isActive));
 	}
 	
 	public Team saveTeam(Team team) throws LeagueException{
 		Team teamToLookfor = teamRep.findByName(team.getName());
-		if(teamToLookfor != null ) {
+		
+		if(teamToLookfor != null && team.getIdTeam() == null) {
 			throw new LeagueException(String.format("Already exist a team with the name %s and it could not be repeated.", team.getName()));
 		}
 		return teamRep.save(team);		

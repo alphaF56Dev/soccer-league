@@ -33,7 +33,7 @@ public class Team {
 	private Date registrationDate;
 	
 	@Column(name="isActive")
-	private Boolean active;
+	private Boolean isActive;
 	
 	@ManyToOne
 	@JoinColumn(name="id_member", referencedColumnName = "id_member")
@@ -71,11 +71,11 @@ public class Team {
 		this.member = member;
 	}
 
-	public Boolean getActive() {
-		return active;
+	public Boolean getIsActive() {
+		return isActive;
 	}
 
-	public void setActive(Boolean active) {
-		this.active = active;
+	public void setIsActive(Boolean active) {
+		this.isActive = active;
 	}
 }

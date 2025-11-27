@@ -16,7 +16,7 @@ import com.alexfierro.league.entity.Team;
  */
 @Repository
 public interface TeamRepository extends JpaRepository<Team, Long>{
-	public List<Team> findByActive(Boolean active);
+	public List<Team> findByIsActive(Boolean isActive);
 	
 	public Team findByName(String name);
 }

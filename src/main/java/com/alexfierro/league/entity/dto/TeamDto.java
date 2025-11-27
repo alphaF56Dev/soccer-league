@@ -31,7 +31,7 @@ public class TeamDto {
 		idTeam = team.getIdTeam();
 		name = team.getName();
 		registrationDate = team.getRegistrationDate();
-		isActive = team.getActive();
+		isActive = team.getIsActive();
 		
 		idMember = team.getMember().getIdMember();
 		memberName = team.getMember().getName();
