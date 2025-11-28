@@ -4,6 +4,7 @@
 package com.alexfierro.league.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.graphql.GraphQlProperties.Http;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -101,5 +102,13 @@ public class CategoryLeagueCtrl extends MainCtrl{
 			msg = e.getMessage();
 		}
 		return new ResponseEntity<>(msg, status);
+	}
+	
+	@GetMapping(value="/get-categoriesByAge/{currenAge}")
+	public ResponseEntity<?> getCategoryByAge(@PathVariable(value="currenAge") short currentAge){
+		if(!hasAccess()) {
+			return new ResponseEntity<>("Access not allowed", HttpStatus.FORBIDDEN);
+		}
+		return new ResponseEntity<>(catLeagueSrv.getCategoriesLeagueByAge(currentAge), HttpStatus.OK);
 	}
 }
