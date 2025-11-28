@@ -152,6 +152,7 @@ CREATE TABLE player_category (
   id_team_category_league BIGINT NOT NULL,
   id_player BIGINT NOT NULL,
   registration_date DATE NULL,
+  player_number SMALLINT NOT NULL,
   PRIMARY KEY(id_player_category),
   FOREIGN KEY(id_player)
     REFERENCES player(id_player)
