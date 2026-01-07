@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alexfierro.league.entity.UserAccess;
+import com.alexfierro.league.entity.dto.AuthResponse;
+import com.alexfierro.league.security.JWTUtil;
 import com.alexfierro.league.service.UserAccessService;
 
 /**
@@ -32,15 +34,18 @@ public class UserAccessCtrl extends MainCtrl{
 	public ResponseEntity<?> auth(@RequestBody HashMap<String, ?> params){
 		String username = "";
 		String pw = "";
+		String tokenJWT = "";
 		try {
 			username = (String)params.get("username");
 			pw = (String) params.get("pw");
 			setCurrentUser(userSrv.validateAccess(username, pw));
 			currentSession.setAttribute("username", username);
+			
+			tokenJWT = JWTUtil.generateToken(username);
 		} catch (Exception e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		return new ResponseEntity<>(true, HttpStatus.OK);		
+		return new ResponseEntity<>(new AuthResponse(tokenJWT), HttpStatus.OK);		
 	}
 	
 	@PostMapping("/add-user")
