@@ -16,7 +16,7 @@ import io.jsonwebtoken.security.Keys;
  *
  */
 public class JWTUtil {
-	private static Key SecretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+	private static Key SecretKey = Keys.hmacShaKeyFor("SecretWordForMoreSecurity20252021".getBytes(StandardCharsets.UTF_8));
 	
 	public static String generateToken(String username) {
 		return Jwts.builder()
