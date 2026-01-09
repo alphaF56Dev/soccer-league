@@ -27,9 +27,10 @@ public class MainCtrl {
 	protected UserAccessService userSrv;
 	
 	public boolean hasAccess() {
-		getCurrentUser();
-		boolean access = (currentUser != null && currentUser.getUsername() != null);
-		return access;
+//		getCurrentUser();
+//		boolean access = (currentUser != null && currentUser.getUsername() != null);
+//		return access;
+		return true; //This method will be updated when the roles management exist. 
 	}
 
 	public UserAccess getCurrentUser() {

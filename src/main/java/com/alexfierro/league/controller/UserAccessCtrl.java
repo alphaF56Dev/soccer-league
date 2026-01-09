@@ -30,6 +30,12 @@ public class UserAccessCtrl extends MainCtrl{
 	@Autowired
 	private UserAccessService userSrv;
 	
+	private final JWTUtil jwtUtil; 
+	
+	public UserAccessCtrl(JWTUtil jwtUtil) {
+		this.jwtUtil = jwtUtil;
+	}
+	
 	@PostMapping("/auth")
 	public ResponseEntity<?> auth(@RequestBody HashMap<String, ?> params){
 		String username = "";
@@ -38,10 +44,10 @@ public class UserAccessCtrl extends MainCtrl{
 		try {
 			username = (String)params.get("username");
 			pw = (String) params.get("pw");
-			setCurrentUser(userSrv.validateAccess(username, pw));
-			currentSession.setAttribute("username", username);
+//			setCurrentUser(userSrv.validateAccess(username, pw));
+//			currentSession.setAttribute("username", username);
 			
-			tokenJWT = JWTUtil.generateToken(username);
+			tokenJWT = jwtUtil.generateToken(username);
 		} catch (Exception e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
