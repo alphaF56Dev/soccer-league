@@ -43,7 +43,6 @@ public class MunicipalityCtrl extends MainCtrl{
 		if(!hasAccess()) {			
 			return new ResponseEntity<>("Access not allowed", HttpStatus.FORBIDDEN);
 		}
-		System.out.println("ID entered: " + stateId);
 		return new ResponseEntity<>(municipalitySrv.listMunicipalityByStateId(stateId), HttpStatus.OK);
 	}
 	

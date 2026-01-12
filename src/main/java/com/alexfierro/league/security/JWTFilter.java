@@ -49,7 +49,6 @@ public class JWTFilter extends OncePerRequestFilter {
 		if(authHeader !=  null && authHeader.startsWith("Bearer ")) {
 			try {
 				String token = authHeader.substring(7);
-				System.out.println("JWTFilter token: " + token);
 				Claims claims = Jwts.parserBuilder()
 				.setSigningKey(SecretKey)
 				.build()
@@ -57,8 +56,6 @@ public class JWTFilter extends OncePerRequestFilter {
 				.getBody();
 				
 				String username = claims .getSubject();
-				
-				System.out.println("**** username: " + username);
 				
 				User userDetails = new User(username, "", List.of(new SimpleGrantedAuthority("ROLE_USER")));
 
@@ -68,8 +65,6 @@ public class JWTFilter extends OncePerRequestFilter {
 				authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
 	            SecurityContextHolder.getContext().setAuthentication(authentication);
-	            
-	            System.out.println(">>> Authentication en contexto: " + SecurityContextHolder.getContext().getAuthentication());
 
 
 			} catch (Exception e) {
