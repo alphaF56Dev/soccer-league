@@ -4,6 +4,7 @@
 package com.alexfierro.league.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,5 +27,9 @@ public class CountryService {
 	
 	public Country saveCountry(Country country) {
 		return countryRep.save(country);
+	}
+	
+	public Optional<Country> getCountryById(Long id_country) {
+		return countryRep.findById(id_country);
 	}
 }
