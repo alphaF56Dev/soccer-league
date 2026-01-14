@@ -47,7 +47,7 @@ CREATE TABLE state (
   id_country BIGINT NOT NULL,
   state_name VARCHAR(150) NOT NULL,
   code VARCHAR(10) NULL,
-  short_name VARCHAR(10) NULL,
+  short_name VARCHAR(20) NULL,
   PRIMARY KEY(id_state),
   FOREIGN KEY(id_country)
     REFERENCES country(id_country)
