@@ -66,6 +66,26 @@ public class MemberCtrl extends MainCtrl{
 		return new ResponseEntity<>(nMember, HttpStatus.OK);
 	}
 	
+	@GetMapping(value = "/get-member-by-id/{idMember}")
+	public ResponseEntity<?> getMemberById(@PathVariable("idMember") Long idMember){
+		if(!hasAccess()) {
+			return new ResponseEntity<>("Access not allowed", HttpStatus.FORBIDDEN);
+		}
+		Member memberToLookfor = null;
+		HttpStatus status = HttpStatus.OK;
+		try {
+			Optional<Member> memberFound = memberSrv.findMemberById(idMember);
+			if(memberFound.isPresent()) {
+				memberToLookfor = memberFound.get();
+			}else {
+				status = HttpStatus.NOT_FOUND;
+			}
+		} catch (Exception e) {
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<>(memberToLookfor, status);
+	}
+	
 	@PostMapping(value="/change-status")
 	public ResponseEntity<?> changeStatus(@RequestBody Member member){
 		if(!hasAccess()) {
