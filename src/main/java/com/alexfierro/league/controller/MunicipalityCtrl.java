@@ -69,7 +69,7 @@ public class MunicipalityCtrl extends MainCtrl{
 		Municipality municipalityToLookFor = null;
 		HttpStatus status = HttpStatus.OK;
 		try {
-			Optional<Municipality> municipalityFound = municipalitySrv.getMunicipalityById(id_municpality);
+			Optional<Municipality> municipalityFound = municipalitySrv.findMunicipalityById(id_municpality);
 			if(municipalityFound.isPresent()) {
 				municipalityToLookFor = municipalityFound.get();
 			}else {

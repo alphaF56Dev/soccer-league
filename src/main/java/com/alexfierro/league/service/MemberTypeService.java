@@ -59,7 +59,7 @@ public class MemberTypeService {
 		return memberTypeRep.findByIsActive(isActive);
 	}
 	
-	public Optional<MemberType> getMemberTypeById(Long idMemberType){
+	public Optional<MemberType> findMemberTypeById(Long idMemberType){
 		return memberTypeRep.findById(idMemberType);
 	}
 }

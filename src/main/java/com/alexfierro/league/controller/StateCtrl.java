@@ -60,7 +60,7 @@ public class StateCtrl extends MainCtrl{
 		State state = null;
 		HttpStatus status = HttpStatus.OK;
 		try {
-			Optional<State> stateToLookfor = stateSrv.getStateById(stateId);
+			Optional<State> stateToLookfor = stateSrv.findStateById(stateId);
 			if(stateToLookfor.isPresent()) {
 				state = stateToLookfor.get();
 			}else {

@@ -29,7 +29,7 @@ public class CountryService {
 		return countryRep.save(country);
 	}
 	
-	public Optional<Country> getCountryById(Long id_country) {
+	public Optional<Country> findCountryById(Long id_country) {
 		return countryRep.findById(id_country);
 	}
 }

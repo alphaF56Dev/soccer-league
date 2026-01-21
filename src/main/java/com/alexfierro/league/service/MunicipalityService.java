@@ -37,7 +37,7 @@ public class MunicipalityService {
 			return municipalityRep.findByState(stateId);
 	}
 	
-	public Optional<Municipality> getMunicipalityById(Long municipalityId){
+	public Optional<Municipality> findMunicipalityById(Long municipalityId){
 		return municipalityRep.findById(municipalityId);
 	}
 }

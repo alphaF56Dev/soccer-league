@@ -25,7 +25,7 @@ public class StateService {
 		return statedRep.findAll();
 	}
 	
-	public Optional<State> getStateById(Long stateId) {
+	public Optional<State> findStateById(Long stateId) {
 		return statedRep.findById(stateId);
 	}
 	

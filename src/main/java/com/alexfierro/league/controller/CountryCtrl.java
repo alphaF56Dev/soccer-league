@@ -59,7 +59,7 @@ public class CountryCtrl extends  MainCtrl{
 		HttpStatus status = HttpStatus.OK;
 		Country country = null;
 		try {
-			Optional<Country> countryRecord = countrySrv.getCountryById(id_country);
+			Optional<Country> countryRecord = countrySrv.findCountryById(id_country);
 			if(countryRecord.isPresent()) {
 				country = countryRecord.get();
 			}else {

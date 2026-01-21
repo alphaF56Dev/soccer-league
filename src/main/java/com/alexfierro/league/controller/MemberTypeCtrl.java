@@ -79,7 +79,7 @@ public class MemberTypeCtrl extends MainCtrl{
 		MemberType memberTypeToLookFor = null;
 		HttpStatus status = HttpStatus.OK;
 		try {
-			Optional<MemberType> memberTypeFound = memberTypeSrv.getMemberTypeById(idMemberType);
+			Optional<MemberType> memberTypeFound = memberTypeSrv.findMemberTypeById(idMemberType);
 			if(memberTypeFound.isPresent()) {
 				memberTypeToLookFor = memberTypeFound.get();
 			}else {
