@@ -3,6 +3,8 @@
  */
 package com.alexfierro.league.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -67,5 +69,25 @@ public class MemberTypeCtrl extends MainCtrl{
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<>(true, HttpStatus.OK);
+	}
+	
+	@GetMapping(value = "get-membertype-by-id/{idMemberType}")
+	public ResponseEntity<?> getMemberTypeById(@PathVariable(value="idMemberType") Long idMemberType){
+		if(!hasAccess()) {
+			return new ResponseEntity<>("Access not allowed", HttpStatus.FORBIDDEN);
+		}
+		MemberType memberTypeToLookFor = null;
+		HttpStatus status = HttpStatus.OK;
+		try {
+			Optional<MemberType> memberTypeFound = memberTypeSrv.getMemberTypeById(idMemberType);
+			if(memberTypeFound.isPresent()) {
+				memberTypeToLookFor = memberTypeFound.get();
+			}else {
+				status = HttpStatus.NOT_FOUND;
+			}
+		} catch (Exception e) {
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<>(memberTypeToLookFor, status);
 	}
 }
