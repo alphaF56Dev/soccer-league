@@ -4,6 +4,7 @@
 package com.alexfierro.league.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -55,8 +56,28 @@ public class MunicipalityCtrl extends MainCtrl{
 		try {
 			nMunicipality = municipalitySrv.saveMunicipality(municipality);
 		} catch (Exception e) {
-			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR); 
+			
 		}
 		return new ResponseEntity<>(nMunicipality, HttpStatus.OK);
+	}
+	
+	@GetMapping(value="/getMunicipalityById/{id_municpality}")
+	public ResponseEntity<?> getMunicipalityById(@PathVariable("id_municpality") Long id_municpality){
+		if(!hasAccess()) {
+			return new ResponseEntity<>("Access not allowed", HttpStatus.FORBIDDEN);
+		}
+		Municipality municipalityToLookFor = null;
+		HttpStatus status = HttpStatus.OK;
+		try {
+			Optional<Municipality> municipalityFound = municipalitySrv.getMunicipalityById(id_municpality);
+			if(municipalityFound.isPresent()) {
+				municipalityToLookFor = municipalityFound.get();
+			}else {
+				status = HttpStatus.NOT_FOUND;
+			}
+		} catch (Exception e) {
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR); 
+		}
+		return new ResponseEntity<>(municipalityToLookFor, status);
 	}
 }
