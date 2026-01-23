@@ -164,18 +164,18 @@ CREATE TABLE player_category (
       ON UPDATE NO ACTION
 );
 
-CREATE TABLE direction (
-  id_direction BIGSERIAL NOT NULL,
+CREATE TABLE address (
+  id_address BIGSERIAL NOT NULL,
   id_municipality BIGINT NOT NULL,
   id_member BIGINT NOT NULL,
-  direction_name VARCHAR(100) NOT NULL,
+  address_name VARCHAR(100) NOT NULL,
   street VARCHAR(150) NOT NULL,
   ext_number VARCHAR(15) NOT NULL,
   int_number VARCHAR(15) NULL,
   suburb VARCHAR(150) NOT NULL,
   zip VARCHAR(25) NOT NULL,
-  full_direction TEXT NOT NULL,
-  PRIMARY KEY(id_direction),
+  full_address TEXT NOT NULL,
+  PRIMARY KEY(id_address),
   FOREIGN KEY(id_member)
     REFERENCES member(id_member)
       ON DELETE NO ACTION
