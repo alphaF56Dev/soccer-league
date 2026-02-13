@@ -21,6 +21,7 @@ CREATE TABLE category_league (
   maxAge INTEGER NOT NULL,
   description VARCHAR(200) NULL,
   duration SMALLINT NOT NULL DEFAULT 90,
+  sex CHAR(3),
   PRIMARY KEY(id_category_league)
 );
 

@@ -39,6 +39,9 @@ public class CategoryLeague {
 	
 	@Column(name="duration", nullable = false)
 	private short duration;
+	
+	@Column(name="sex")
+	private Character sex;
 
 	public Long getIdCategoryLeague() {
 		return idCategoryLeague;
@@ -94,5 +97,13 @@ public class CategoryLeague {
 
 	public void setDuration(short duration) {
 		this.duration = duration;
+	}
+
+	public Character getSex() {
+		return sex;
+	}
+
+	public void setSex(Character sex) {
+		this.sex = sex;
 	}
 }
