@@ -54,4 +54,9 @@ public class TeamService {
 		}
 		return nTeams;
 	}
+	
+	public Boolean validateOwnerTeam(Long memberId) {		
+		Optional<Team> optTeams =  teamRep.findTeamsByMemberId(memberId);
+		return optTeams.isEmpty();
+	}
 }

@@ -19,7 +19,7 @@ public class TeamDto {
 	
 	private Long idMember;
 	private String memberName;
-	private String personalId;
+	//private String personalId;
 	private Date birthday;
 	private String phoneNumber;
 	private Character sex;
@@ -35,7 +35,7 @@ public class TeamDto {
 		
 		idMember = team.getMember().getIdMember();
 		memberName = team.getMember().getName();
-		personalId = team.getMember().getPersonalId();
+		//personalId = team.getMember().getPersonalId();
 		birthday = team.getMember().getBirthday();
 		phoneNumber = team.getMember().getPhone();
 		sex = team.getMember().getSex();
@@ -80,12 +80,12 @@ public class TeamDto {
 	public void setMemberName(String memberName) {
 		this.memberName = memberName;
 	}
-	public String getPersonalId() {
-		return personalId;
-	}
-	public void setPersonalId(String personalId) {
-		this.personalId = personalId;
-	}
+//	public String getPersonalId() {
+//		return personalId;
+//	}
+//	public void setPersonalId(String personalId) {
+//		this.personalId = personalId;
+//	}
 	public Date getBirthday() {
 		return birthday;
 	}

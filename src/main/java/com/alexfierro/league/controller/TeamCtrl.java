@@ -3,6 +3,8 @@
  */
 package com.alexfierro.league.controller;
 
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,6 +76,13 @@ public class TeamCtrl extends MainCtrl{
 		}
 		Team nTeam = null;
 		try {
+			if(team != null && team.getRegistrationDate() == null) {
+				Calendar now = Calendar.getInstance();
+				team.setRegistrationDate(new Date(now.getTimeInMillis()));
+			}
+			if(!teamSrv.validateOwnerTeam(team.getMember().getIdMember())) {
+				return new ResponseEntity<>("{\"msg\": \"The owner cannot have more that one team active assigned.\"}", HttpStatus.CONFLICT);
+			}
 			nTeam = teamSrv.saveTeam(team);
 		} catch (Exception e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
