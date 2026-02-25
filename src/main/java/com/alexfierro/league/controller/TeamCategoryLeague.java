@@ -40,6 +40,15 @@ public class TeamCategoryLeague extends MainCtrl{
 		return new ResponseEntity<>(tCatLeagueSrv.listCategoriesByIdTeam(idTeam), HttpStatus.OK);
 	}
 	
+	@GetMapping(value="/get-categoriesId-byIdTeam/{idTeam}")
+	private ResponseEntity<?> getCategoriesIdByIdTeam(@PathVariable(value= "idTeam") Long idTeam){
+		if(!hasAccess()) {
+			return new ResponseEntity<>("Access not allowed", HttpStatus.FORBIDDEN);
+		}
+		return new ResponseEntity<>(tCatLeagueSrv.getListCategoriesByTeam(idTeam), HttpStatus.OK);
+	}
+	
+	
 	@PutMapping(value="/add-category-to-team/{idTeam}/{idCategoryLeague}")
 	private ResponseEntity<?> addCategoryToTeam(@PathVariable(value="idTeam") Long idTeam, @PathVariable(value="idCategoryLeague") Long idCategoryLeague){
 		if(!hasAccess()) {
@@ -52,17 +61,17 @@ public class TeamCategoryLeague extends MainCtrl{
 			code = tCatLeagueSrv.addCategoryToTeam(idTeam, idCategoryLeague);
 			switch (code) {
 			case 0: {
-				msg = "The category has already exist to the team.";
+				msg = "{\"msg\" : \"The category has already exist to the team.\"}";
 				status = HttpStatus.CONFLICT;
 				break;
 			}
 			case 1: {
-				msg = "The category was added success to the team.";
+				msg = "{\"msg\" : \"The category was added success to the team.\"}";
 				status = HttpStatus.OK;
 				break;
 			}
 			default:
-				msg = "Fail to add category.";
+				msg = "{\"msg\" : \"Fail to add category.\"}";
 				status = HttpStatus.CONFLICT;
 			}
 		} catch (Exception e) {
@@ -84,17 +93,17 @@ public class TeamCategoryLeague extends MainCtrl{
 			code = tCatLeagueSrv.removeCategoryOfTeam(idTeam, idCategoryLeague);
 			switch (code) {
 			case 0: {
-				msg = "The team has not the category added yet.";
+				msg = "{\"msg\" : \"The team has not the category added yet.\"}";
 				status = HttpStatus.CONFLICT;
 				break;
 			}
 			case 1: {
-				msg = "The category was removed success to the team.";
+				msg = "{\"msg\" : \"The category was removed success to the team.\"}";
 				status = HttpStatus.OK;
 				break;
 			}
 			default:
-				msg = "Fail to remove category.";
+				msg = "{\"msg\" : \"Fail to remove category.\"}";
 				status = HttpStatus.CONFLICT;
 			}
 		} catch (Exception e) {

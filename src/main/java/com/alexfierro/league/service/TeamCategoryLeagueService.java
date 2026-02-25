@@ -3,7 +3,10 @@
  */
 package com.alexfierro.league.service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Locale.Category;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -11,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import com.alexfierro.league.entity.CategoryLeague;
 import com.alexfierro.league.entity.Team;
 import com.alexfierro.league.entity.TeamCategoryLeague;
+import com.alexfierro.league.entity.dto.TeamCategoryDto;
 import com.alexfierro.league.repository.TeamCategoryLeagueRepository;
 
 /**
@@ -22,12 +26,42 @@ public class TeamCategoryLeagueService {
 	@Autowired
 	private TeamCategoryLeagueRepository tCatLeagueRep;
 	
+	@Autowired
+	private CategoryLeagueService catLeagueSrv;
+	
 	public List<Team> listTeamsByIdCategoryLeague(Long idCategoryLeague){
 		return tCatLeagueRep.findByIdCategoryLeague(idCategoryLeague);
 	}
 	
 	public List<CategoryLeague> listCategoriesByIdTeam(Long idTeam){
 		return tCatLeagueRep.findByIdTeam(idTeam);
+	}
+	
+	public List<TeamCategoryDto> getListCategoriesByTeam(Long idTeam){
+		List<Long> categoriesId = getListCategoriesIdByIdTeam(idTeam);
+		List<CategoryLeague> allCategories = catLeagueSrv.listCategoryLeague();
+		List<TeamCategoryDto> teamCategories = new ArrayList<>();
+		
+		if(categoriesId != null && categoriesId.size() > 0) {			
+			for(CategoryLeague category : allCategories) {
+				Boolean isChecked = false;
+				if(categoriesId != null && categoriesId.size() > 0) {
+					for (int i = 0; i < categoriesId.size(); i++) {
+						if(category.getIdCategoryLeague() == categoriesId.get(i)) {
+							isChecked = true;
+							categoriesId.remove(i);							
+							break;
+						}
+					}
+				}
+				teamCategories.add(new TeamCategoryDto(category, isChecked));
+			}
+		}
+		return teamCategories;
+	}
+	
+	private List<Long> getListCategoriesIdByIdTeam(Long idTeam){
+		return tCatLeagueRep.findCategoriesIdByIdTeam(idTeam);
 	}
 	
 	/**

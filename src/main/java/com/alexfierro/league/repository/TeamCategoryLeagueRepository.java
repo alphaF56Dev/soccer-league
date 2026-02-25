@@ -28,4 +28,7 @@ public interface TeamCategoryLeagueRepository extends JpaRepository<TeamCategory
 	
 	@Query("SELECT TC FROM TeamCategoryLeague TC WHERE TC.team.idTeam = ?1 AND TC.categoryLeague.idCategoryLeague = ?2")
 	public TeamCategoryLeague findByIdTeamAndIdCategoryLeague(Long idTeam, Long idCategoryLeague);
+	
+	@Query("SELECT TC.categoryLeague.idCategoryLeague FROM TeamCategoryLeague TC WHERE TC.team.idTeam = ?1")
+	public List<Long> findCategoriesIdByIdTeam(Long idTeam);
 }
