@@ -10,15 +10,15 @@ package com.alexfierro.league.entity.dto;
 public class AddressDto {
 	private Long idAddress;
 	private String addressName;
-	private String suburd;
+	private String suburb;
 	private String location;
 	
 	
 	
-	public AddressDto(Long idAddress, String addressName, String suburd, String location) {
+	public AddressDto(Long idAddress, String addressName, String suburb, String location) {
 		this.idAddress = idAddress;
 		this.addressName = addressName;
-		this.suburd = suburd;
+		this.suburb = suburb;
 		this.location = location;
 	}
 	public Long getIdAddress() {
@@ -33,11 +33,11 @@ public class AddressDto {
 	public void setAddressName(String addressName) {
 		this.addressName = addressName;
 	}
-	public String getSuburd() {
-		return suburd;
+	public String getSuburb() {
+		return suburb;
 	}
-	public void setSuburd(String suburd) {
-		this.suburd = suburd;
+	public void setSuburb(String suburd) {
+		this.suburb = suburd;
 	}
 	public String getLocation() {
 		return location;
