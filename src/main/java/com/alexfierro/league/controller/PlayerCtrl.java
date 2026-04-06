@@ -49,7 +49,7 @@ public class PlayerCtrl extends MainCtrl{
 		if(!hasAccess()) {
 			return new ResponseEntity<>("Access not allowed", HttpStatus.FORBIDDEN);
 		}
-		PlayerDto playerFound = null;
+		Player playerFound = null;
 		HttpStatus status = HttpStatus.OK;
 		try {
 			playerFound = playerSrv.getPlayerByMemberId(idMember);

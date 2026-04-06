@@ -31,8 +31,8 @@ public class PlayerService {
 		return transfortToListPlayerDto(playerRep.findPlayersByStatus(isActive));
 	}
 	
-	public PlayerDto getPlayerByMemberId(Long idMember) {
-		return transformToPlayerDto(playerRep.findPlayerByMemberId(idMember));
+	public Player getPlayerByMemberId(Long idMember) {
+		return playerRep.findPlayerByMemberId(idMember);
 	}
 	
 	public PlayerDto getPlayerByPlayerId(Long idPlayer) {
@@ -41,7 +41,7 @@ public class PlayerService {
 	
 	public Player savePlayer(Player player) throws LeagueException {
 		Player playerToLookfor = playerRep.findPlayerByMemberId(player.getMember().getIdMember());
-		if(playerToLookfor != null) {
+		if(playerToLookfor != null && player.getIdPlayer() == null) {
 			throw new LeagueException("Player information could not be saved due to the member selected has already information player assigned.");
 		}
 		return playerRep.save(player);
