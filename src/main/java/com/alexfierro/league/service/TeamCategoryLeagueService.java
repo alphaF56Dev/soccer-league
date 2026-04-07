@@ -56,6 +56,10 @@ public class TeamCategoryLeagueService {
 				}
 				teamCategories.add(new TeamCategoryDto(category, isChecked));
 			}
+		}else {
+			for (int i = 0; i < allCategories.size(); i++) {
+				teamCategories.add(new TeamCategoryDto(allCategories.get(i), false));
+			}
 		}
 		return teamCategories;
 	}
