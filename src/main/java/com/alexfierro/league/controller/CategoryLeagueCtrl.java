@@ -104,11 +104,11 @@ public class CategoryLeagueCtrl extends MainCtrl{
 		return new ResponseEntity<>(msg, status);
 	}
 	
-	@GetMapping(value="/get-categoriesByAge/{currenAge}")
-	public ResponseEntity<?> getCategoryByAge(@PathVariable(value="currenAge") short currentAge){
+	@GetMapping(value="/get-categoriesAvailableToMember/{idMember}")
+	public ResponseEntity<?> getCategoryAvailableToMember(@PathVariable(value="idMember") Long idMember){
 		if(!hasAccess()) {
 			return new ResponseEntity<>("Access not allowed", HttpStatus.FORBIDDEN);
 		}
-		return new ResponseEntity<>(catLeagueSrv.getCategoriesLeagueByAge(currentAge), HttpStatus.OK);
+		return new ResponseEntity<>(catLeagueSrv.getCategoriesLeagueByAge(idMember), HttpStatus.OK);
 	}
 }

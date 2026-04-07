@@ -3,6 +3,9 @@
  */
 package com.alexfierro.league.service;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alexfierro.league.entity.CategoryLeague;
+import com.alexfierro.league.entity.Member;
 import com.alexfierro.league.repository.CategoryLeagueRepository;
 
 /**
@@ -20,6 +24,8 @@ import com.alexfierro.league.repository.CategoryLeagueRepository;
 public class CategoryLeagueService {
 	@Autowired
 	private CategoryLeagueRepository catLeagueRep;
+	@Autowired
+	private MemberService memberSrv;
 	
 	public List<CategoryLeague> listCategoryLeague(){		
 		return catLeagueRep.findAll();
@@ -78,7 +84,13 @@ public class CategoryLeagueService {
 		return code;
 	}
 	
-	public List<CategoryLeague> getCategoriesLeagueByAge(short currentAge){
+	public List<CategoryLeague> getCategoriesLeagueByAge(Long idMember){
+		Optional<Member> member = memberSrv.findMemberById(idMember);
+		short currentAge = 0;
+		if(member.isPresent()) {
+			Period diff = Period.between(member.get().getBirthday().toLocalDate(), LocalDate.now());
+			currentAge = (short) diff.getYears();
+		}
 		return catLeagueRep.findAllByAge(currentAge);
 	}
 }
