@@ -31,8 +31,8 @@ public interface PlayerCategoryRepository extends JpaRepository<PlayerCategory, 
 	 * @param idPlayer - id of the player to look for their teams linked
 	 * @return a list of PlayerCategory if exist.
 	 */
-	@Query("SELECT PC FROM PlayerCategory PC WHERE PC.player.idPlayer = ?1")
-	public List<PlayerCategory> findTeamsByPlayerId(Long idPlayer);
+	@Query("SELECT PC FROM PlayerCategory PC WHERE PC.player.member.idMember = ?1")
+	public List<PlayerCategory> findTeamsByPlayerId(Long idMember);
 	
 	/**
 	 * Get all players which belong to the relation between a team and category if we only know the idTeam and idCategoryLeague

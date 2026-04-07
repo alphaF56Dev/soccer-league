@@ -37,7 +37,7 @@ public class PlayerCategoryCtrl extends MainCtrl{
 	}
 	
 	@GetMapping(value = "/list-byIdTeamAndIdCategory/{idTeam}/{idCategory}")
-	public ResponseEntity<?> listaByIdteamAndIdCategory(
+	public ResponseEntity<?> listByIdTeamAndIdCategory(
 				@PathVariable(value="idTeam") Long idTeam,
 				@PathVariable(value="idCategory") Long idCategory
 			){
@@ -47,12 +47,12 @@ public class PlayerCategoryCtrl extends MainCtrl{
 		return new ResponseEntity<>(playeCatSrv.getPlayersByIdTeamAndIdCategory(idTeam, idCategory), HttpStatus.OK);
 	}
 	
-	@GetMapping(value = "/list-teams-byIdPlayer/{idPlayer}")
-	public ResponseEntity<?> ListTeamsByIdPlayer(@PathVariable(value="idPlayer") Long idPlayer){
+	@GetMapping(value = "/list-teams-byIdMember/{idMember}")
+	public ResponseEntity<?> ListTeamsByIdMember(@PathVariable(value="idMember") Long idMember){
 		if(!hasAccess()) {
 			return new ResponseEntity<>("Not access to this point", HttpStatus.FORBIDDEN);
 		}
-		return new ResponseEntity<>(playeCatSrv.getTeamsByIdPlayer(idPlayer), HttpStatus.OK);
+		return new ResponseEntity<>(playeCatSrv.getTeamsByIdPlayer(idMember), HttpStatus.OK);
 	}
 	
 	@PostMapping(value="/addPlayerToCategory")

@@ -45,8 +45,8 @@ public class PlayerCategoryService {
 		return playerCatRep.findPlayersByIdTeamAndIdCategory(idTeam, idCategoryLeague);
 	}
 	
-	public List<PlayerCategoryDto> getTeamsByIdPlayer(Long idPlayer){
-		return transformToListPlayerCategoryDto(playerCatRep.findTeamsByPlayerId(idPlayer));
+	public List<PlayerCategoryDto> getTeamsByIdPlayer(Long idMember){
+		return transformToListPlayerCategoryDto(playerCatRep.findTeamsByPlayerId(idMember));
 	}
 	
 	private List<PlayerCategoryDto> transformToListPlayerCategoryDto(List<PlayerCategory> playerCatList){
