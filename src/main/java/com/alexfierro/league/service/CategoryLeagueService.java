@@ -91,6 +91,6 @@ public class CategoryLeagueService {
 			Period diff = Period.between(member.get().getBirthday().toLocalDate(), LocalDate.now());
 			currentAge = (short) diff.getYears();
 		}
-		return catLeagueRep.findAllByAge(currentAge);
+		return catLeagueRep.findAllByAge(currentAge, member.get().getSex());
 	}
 }

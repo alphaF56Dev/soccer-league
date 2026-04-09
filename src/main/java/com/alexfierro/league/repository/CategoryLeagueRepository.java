@@ -21,6 +21,6 @@ public interface CategoryLeagueRepository extends JpaRepository<CategoryLeague, 
 	@Query("SELECT CL FROM CategoryLeague CL WHERE CL.name LIKE '%' || ?1 || '%'")
 	public List<CategoryLeague> findCategoryLeagueByName(String name);
 	
-	@Query("SELECT CL FROM CategoryLeague CL WHERE ?1 BETWEEN CL.minAge AND CL.maxAge AND CL.isActive = true")
-	public List<CategoryLeague> findAllByAge(short currentAge);
+	@Query("SELECT CL FROM CategoryLeague CL WHERE ?1 BETWEEN CL.minAge AND CL.maxAge AND CL.isActive = true AND CL.sex = ?2")
+	public List<CategoryLeague> findAllByAge(short currentAge, Character sex);
 }
