@@ -20,8 +20,8 @@ import com.alexfierro.league.entity.TeamCategoryLeague;
 @Repository
 public interface TeamCategoryLeagueRepository extends JpaRepository<TeamCategoryLeague, Long>{
 
-	@Query("SELECT TC.team FROM TeamCategoryLeague TC WHERE TC.categoryLeague.idCategoryLeague = ?1")
-	public List<Team> findByIdCategoryLeague(Long idCategoryLeague);
+	@Query("SELECT TC FROM TeamCategoryLeague TC WHERE TC.categoryLeague.idCategoryLeague = ?1")
+	public List<TeamCategoryLeague> findByIdCategoryLeague(Long idCategoryLeague);
 	
 	@Query("SELECT TC.categoryLeague FROM TeamCategoryLeague TC WHERE TC.team.idTeam = ?1")
 	public List<CategoryLeague> findByIdTeam(Long idTeam);

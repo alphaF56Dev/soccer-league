@@ -4,9 +4,7 @@
 package com.alexfierro.league.service;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Locale.Category;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -29,7 +27,7 @@ public class TeamCategoryLeagueService {
 	@Autowired
 	private CategoryLeagueService catLeagueSrv;
 	
-	public List<Team> listTeamsByIdCategoryLeague(Long idCategoryLeague){
+	public List<TeamCategoryLeague> listTeamsByIdCategoryLeague(Long idCategoryLeague){
 		return tCatLeagueRep.findByIdCategoryLeague(idCategoryLeague);
 	}
 	
