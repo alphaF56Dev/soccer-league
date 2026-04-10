@@ -99,7 +99,7 @@ public class PlayerCategoryCtrl extends MainCtrl{
 		return new ResponseEntity<>(msg, status);
 	}
 	
-	@DeleteMapping(value="/remove-byIdPlayeCetagory/{idPlayerCategory}")
+	@DeleteMapping(value="/remove-byIdPlayerCetagory/{idPlayerCategory}")
 	public ResponseEntity<?> removeByIdPlayerCategory(@PathVariable(value = "idPlayerCategory") Long idPlayerCategory){
 		if(!hasAccess()) {
 			return new ResponseEntity<>("Not access to this point", HttpStatus.FORBIDDEN);
