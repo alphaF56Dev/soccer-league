@@ -28,6 +28,14 @@ public class PlayerCategoryCtrl extends MainCtrl{
 	@Autowired
 	private PlayerCategoryService playeCatSrv;
 	
+	@GetMapping(value = "/list-players-byIdTeam/{idTeam}")
+	public ResponseEntity<?> listPlayersByIdTeam(@PathVariable(value = "idTeam") Long idTeam){
+		if(!hasAccess()) {
+			return new ResponseEntity<>("Not access to this point", HttpStatus.FORBIDDEN);
+		}
+		return new ResponseEntity<>(playeCatSrv.getPlayersByIdTeam(idTeam), HttpStatus.OK);
+	}
+	
 	@GetMapping(value = "/list-byIdTeamCategory/{idTeamCategory}")
 	public ResponseEntity<?> listByIdTeamCategory(@PathVariable(value = "idTeamCategory") Long idTeamCategory){
 		if(!hasAccess()) {

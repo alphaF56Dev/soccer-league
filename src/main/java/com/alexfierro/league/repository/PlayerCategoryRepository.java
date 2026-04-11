@@ -18,6 +18,9 @@ import com.alexfierro.league.entity.TeamCategoryLeague;
  *
  */
 public interface PlayerCategoryRepository extends JpaRepository<PlayerCategory, Long>{
+	
+	@Query("SELECT PC FROM PlayerCategory PC WHERE PC.teamCategoryLeague.team.idTeam = ?1")
+	public List<PlayerCategory> findPlayersByIdTeam(Long idTeam);
 	/**
 	 * Get all players which belong to the relation between a team and category identified by idTeamCategoryLeague
 	 * @param idTeamCategory - id of the relation

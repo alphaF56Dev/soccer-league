@@ -14,12 +14,14 @@ import com.alexfierro.league.entity.PlayerCategory;
 public class PlayerCategoryDto {
 	private Long idPlayerCategory;
 	
+	private Long idTeam;
 	private Long idTeamCategory;
 	private String teamName;
 	private String categoryName;
 	private short minAge;
 	private short maxAge;
 	
+	private Long idMember;
 	private Long playerId;
 	private String nickname;
 	
@@ -29,12 +31,14 @@ public class PlayerCategoryDto {
 	public PlayerCategoryDto(PlayerCategory playerCategory) {
 		idPlayerCategory = playerCategory.getIdPlayerCategory();
 		
+		idTeam = playerCategory.getTeamCategoryLeague().getTeam().getIdTeam();
 		idTeamCategory = playerCategory.getTeamCategoryLeague().getIdTeamCategoryLeague();
 		teamName = playerCategory.getTeamCategoryLeague().getTeam().getName();
 		categoryName = playerCategory.getTeamCategoryLeague().getCategoryLeague().getName();
 		minAge = playerCategory.getTeamCategoryLeague().getCategoryLeague().getMinAge();
 		maxAge = playerCategory.getTeamCategoryLeague().getCategoryLeague().getMaxAge();
 		
+		idMember = playerCategory.getPlayer().getMember().getIdMember();
 		playerId = playerCategory.getPlayer().getIdPlayer();
 		nickname = playerCategory.getPlayer().getNickname();
 		
@@ -48,6 +52,16 @@ public class PlayerCategoryDto {
 	public void setIdPlayerCategory(Long idPlayerCategory) {
 		this.idPlayerCategory = idPlayerCategory;
 	}
+	
+	
+	public Long getIdTeam() {
+		return idTeam;
+	}
+
+	public void setIdTeam(Long idTeam) {
+		this.idTeam = idTeam;
+	}
+
 	public Long getIdTeamCategory() {
 		return idTeamCategory;
 	}
@@ -78,6 +92,14 @@ public class PlayerCategoryDto {
 	public void setMaxAge(short maxAge) {
 		this.maxAge = maxAge;
 	}
+	public Long getIdMember() {
+		return idMember;
+	}
+
+	public void setIdMember(Long idMember) {
+		this.idMember = idMember;
+	}
+
 	public Long getPlayerId() {
 		return playerId;
 	}

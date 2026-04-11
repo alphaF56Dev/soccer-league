@@ -37,6 +37,10 @@ public class PlayerCategoryService {
 	@Autowired
 	private PlayerRepository playerRep;
 	
+	public List<PlayerCategoryDto> getPlayersByIdTeam(Long idTeam){
+		return transformToListPlayerCategoryDto(playerCatRep.findPlayersByIdTeam(idTeam));
+	}
+	
 	public List<Player> getPlayersByIdTeamCategory(Long idTeamCategoryLeague){
 		return playerCatRep.findPlayersByIdTeamCategory(idTeamCategoryLeague);
 	}
