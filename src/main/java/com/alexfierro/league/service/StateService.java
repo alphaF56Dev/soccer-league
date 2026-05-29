@@ -25,6 +25,10 @@ public class StateService {
 		return statedRep.findAll();
 	}
 	
+	public List<State> getStatesByIdCountry(Long idCountry){
+		return statedRep.findStatesByIdCountry(idCountry);
+	}
+	
 	public Optional<State> findStateById(Long stateId) {
 		return statedRep.findById(stateId);
 	}

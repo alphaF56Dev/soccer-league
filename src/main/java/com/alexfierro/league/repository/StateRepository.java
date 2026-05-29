@@ -3,9 +3,11 @@
  */
 package com.alexfierro.league.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.alexfierro.league.entity.State;
@@ -17,4 +19,7 @@ import com.alexfierro.league.entity.State;
 @Repository
 public interface StateRepository extends JpaRepository<State, Long>{
 	public Optional<State> findByName(String name);
+	
+	@Query("SELECT S FROM State S WHERE S.idCountry.id_country = ?1")
+	public List<State> findStatesByIdCountry(Long idCountry); 
 }

@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.alexfierro.league.entity.State;
 import com.alexfierro.league.service.StateService;
 
+import jakarta.websocket.server.PathParam;
+
 /**
  * @author alpha
  *
@@ -36,6 +38,14 @@ public class StateCtrl extends MainCtrl{
 			return new ResponseEntity<>("Access not allowed", HttpStatus.FORBIDDEN);
 		}
 		return new ResponseEntity<List<State>>(stateSrv.getStates(), HttpStatus.OK);
+	}
+	
+	@GetMapping(value="/list-states-byIdCountry/{idCountry}")
+	public ResponseEntity<?> listStatesByIdCountry(@PathVariable(value="idCountry") Long idCountry){
+		if(!hasAccess()) {
+			return new ResponseEntity<>("Access not allowed", HttpStatus.FORBIDDEN);
+		}
+		return new ResponseEntity<>(stateSrv.getStatesByIdCountry(idCountry), HttpStatus.OK);
 	}
 	
 	@PostMapping(value = "/save-state")
