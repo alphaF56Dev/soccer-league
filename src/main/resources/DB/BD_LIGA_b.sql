@@ -133,17 +133,30 @@ CREATE TABLE municipality (
 
 CREATE TABLE soccer_field (
   id_soccer_field BIGSERIAL NOT NULL,
-  id_category_league BIGINT NOT NULL,
   id_municipality BIGINT NOT NULL,
   field_name VARCHAR(35) NULL,
-  full_direction VARCHAR(400) NULL,
+  full_address VARCHAR(400) NULL,
   PRIMARY KEY(id_soccer_field),
-  FOREIGN KEY(id_category_league)
-    REFERENCES category_league(id_category_league)
-      ON DELETE NO ACTION
-      ON UPDATE NO ACTION,
   FOREIGN KEY(id_municipality)
     REFERENCES municipality(id_municipality)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+);
+
+CREATE TABLE field_category (
+  id_field_category BIGSERIAL NOT NULL,
+  id_soccer_field INTEGER NOT NULL,
+  id_category_league INTEGER NOT NULL,
+  start_hour VARCHAR(10) NULL,
+  end_hour VARCHAR(10) NULL,
+  match_days VARCHAR(7) NULL,
+  PRIMARY KEY(id_field_category),
+  FOREIGN KEY(id_soccer_field)
+    REFERENCES soccer_field(id_soccer_field)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(id_category_league)
+    REFERENCES category_league(id_category_league)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
 );
