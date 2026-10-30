@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alexfierro.league.entity.FieldCategory;
+import com.alexfierro.league.entity.dto.FieldAvailabilityResultDto;
 import com.alexfierro.league.service.FieldCategoryService;
 
 /**
@@ -64,33 +65,17 @@ public class FieldCategoryCtrl extends MainCtrl{
 		if(!hasAccess()) {
 			return new ResponseEntity<>("Not access to this point", HttpStatus.FORBIDDEN);
 		}
-		int code = -1;
+		FieldAvailabilityResultDto validationResult = new FieldAvailabilityResultDto();
 		HttpStatus status = HttpStatus.OK;
-		String msg = "";
 		
 		try {
 			if(fieldCategory.getIdFieldCategory() == null) {
 				fieldCategory.setActive(true);
 			}
-			code = fieldCatSrv.saveFieldCategory(fieldCategory);
-			switch (code) {
-			case 0: {
-				msg = "Already exist a record with this field and category.";
-				status = HttpStatus.BAD_REQUEST;
-				break;
-			}
-			case 1:{
-				msg = "Field category saved successfully.";
-				status = HttpStatus.ACCEPTED;
-				break;
-			}
-			default:
-				msg = "Something was wrong trying to save the field category.";
-				status = HttpStatus.CONFLICT;
-			}
+			validationResult = fieldCatSrv.saveFieldCategory(fieldCategory);
 		} catch (Exception e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR); 
 		}
-		return new ResponseEntity<>(msg, status);
+		return new ResponseEntity<>(validationResult, status);
 	}
 }

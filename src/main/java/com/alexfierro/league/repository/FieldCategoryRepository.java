@@ -25,4 +25,7 @@ public interface FieldCategoryRepository extends JpaRepository<FieldCategory, Lo
 	
 	@Query("SELECT FC FROM FieldCategory AS FC WHERE FC.idField.idField = :idField AND FC.idCategoryLeague.idCategoryLeague = :idCategoryLeague")
 	public FieldCategory findFieldByIdFieldAndIdCategory(Long idField,Long idCategoryLeague);
+	
+	@Query("SELECT FC FROM FieldCategory AS FC WHERE FC.idField.idField = :idField")
+	public List<FieldCategory> findAllFieldCategoryByIdField(Long idField);
 }
