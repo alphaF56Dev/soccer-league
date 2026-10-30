@@ -134,7 +134,7 @@ public class FieldCategoryService {
 	private boolean hasCommonDays(String newDays, String existingDays) {
 		boolean commonDays = false;
 		for (int i = 0; i < existingDays.length(); i++) {
-			String currentDay = newDays.substring(i, 1);
+			String currentDay = existingDays.substring(i, i + 1);
 			if(newDays.contains(currentDay)) {
 				commonDays = true;
 				break;
