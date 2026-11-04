@@ -23,6 +23,7 @@ public class FieldCategoryDto {
 	private String startHour;
 	private String endHour;
 	private String matchDays;
+	private boolean isActive;
 	
 	public FieldCategoryDto(FieldCategory fieldCategory) {
 		idFieldCategory = fieldCategory.getIdFieldCategory();
@@ -38,6 +39,7 @@ public class FieldCategoryDto {
 		startHour = fieldCategory.getStartHour();
 		endHour = fieldCategory.getEndHour();
 		matchDays = fieldCategory.getMatchDays();
+		isActive = fieldCategory.getIsActive();
 	}
 	
 	public Long getIdFieldCategory() {
@@ -100,4 +102,11 @@ public class FieldCategoryDto {
 	public void setMatchDays(String matchDays) {
 		this.matchDays = matchDays;
 	}
+	public boolean getIsActive() {
+		return isActive;
+	}
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+
 }

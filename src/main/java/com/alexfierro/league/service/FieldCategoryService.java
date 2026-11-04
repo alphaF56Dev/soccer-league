@@ -159,4 +159,25 @@ public class FieldCategoryService {
 		
 		return overlap;
 	}
+	
+	public FieldAvailabilityResultDto changeActiveFieldCategory(Long idFieldCategory,boolean isActive) {
+		FieldAvailabilityResultDto result = new FieldAvailabilityResultDto();
+		Optional<FieldCategory> fieldCategoryToUpdate =  fieldCatRep.findById(idFieldCategory);
+		if(fieldCategoryToUpdate.isPresent()) {
+			if(fieldCategoryToUpdate.get().getIsActive() == isActive) {
+				result.setCode(0);
+				result.setMessage("The schedule has already this status.");
+			}else {
+				FieldCategory newFieldCategory = fieldCategoryToUpdate.get();
+				newFieldCategory.setActive(isActive);
+				fieldCatRep.save(newFieldCategory);
+				result.setCode(1);
+				result.setMessage("Schedule status updated successfully");
+			}
+		}else {
+			result.setCode(2);
+			result.setMessage("Wrong schedule to update. Please contact to your admin.");
+		}
+		return result;
+	}
 }
