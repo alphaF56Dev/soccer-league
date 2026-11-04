@@ -56,7 +56,8 @@ public class FieldCategoryService {
 			fieldAvailabilityStatus.setMessage("The start hour cannot be more than end hour");
 		}else {
 			fieldsOverSlap = validateFieldAvailability(fieldCategory.getStartHour(), fieldCategory.getEndHour(), 
-					fieldCategory.getIdField().getIdField(), fieldCategory.getMatchDays());
+					fieldCategory.getIdField().getIdField(), fieldCategory.getMatchDays(),
+					fieldCategory.getIdFieldCategory() != null ? fieldCategory.getIdFieldCategory() : 0);
 			if(fieldsOverSlap.size() == 0) {
 				fieldCatRep.save(fieldCategory);
 			}else {
@@ -105,9 +106,9 @@ public class FieldCategoryService {
 		return newMatchDays;
 	}
 	
-	private List<String> validateFieldAvailability(String startHour, String endHour, Long idField, String matchDays) {
+	private List<String> validateFieldAvailability(String startHour, String endHour, Long idField, String matchDays, Long idFieldCategory) {
 		boolean isAvailable = true;
-		List<FieldCategory> fieldsSchedule = fieldCatRep.findAllFieldCategoryByIdField(idField);
+		List<FieldCategory> fieldsSchedule = fieldCatRep.findAllFieldCategoryByIdField(idField, idFieldCategory);
 		List<String> fieldsOverSlap = new ArrayList<>();
 		for (FieldCategory fieldCat : fieldsSchedule) {
 			if (hasCommonDays(matchDays, fieldCat.getMatchDays())){
