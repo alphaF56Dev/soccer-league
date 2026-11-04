@@ -216,6 +216,20 @@ CREATE TABLE category_league_has_referee (
       ON UPDATE NO ACTION
 );
 
+CREATE TABLE tournament (
+  id_tournament  BIGSERIAL NOT NULL,
+  id_category_league BIGINT NOT NULL,
+  tournament_name VARCHAR(80) NOT NULL,
+  start_date DATE NOT NULL,
+  end_date DATE NOT NULL,
+  match_days VARCHAR(7) NOT NULL,
+  PRIMARY KEY(id_tournament),
+  FOREIGN KEY (id_category_league)
+    REFERENCES category_league(id_category_league)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+);
+
 CREATE TABLE game (
   id_game BIGSERIAL NOT NULL,
   id_referee BIGINT NOT NULL,
